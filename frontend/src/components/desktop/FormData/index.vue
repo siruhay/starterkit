@@ -79,7 +79,7 @@
     </page-filter>
 
     <v-main style="min-height: 100dvh">
-        <v-container class="pt-0 h-100">
+        <v-container class="pt-0 h-100 position-relative">
             <page-paper :text-left="title" max-width="100%">
                 <v-data-table-server
                     v-model="selected"
@@ -128,20 +128,19 @@
                     </template>
                 </v-data-table-server>
             </page-paper>
-        </v-container>
 
-        <v-fab
-            v-if="!hideAddnew && !hasSelected"
-            class="me-9"
-            color="deep-orange"
-            icon="add"
-            location="end"
-            size="64"
-            absolute
-            appear
-            style="bottom: 95px"
-            @click="openFormCreate"
-        ></v-fab>
+            <v-fab
+                v-if="!hideAddnew && !hasSelected"
+                class="me-9"
+                color="deep-orange"
+                icon="add"
+                location="bottom right"
+                size="64"
+                absolute
+                appear
+                @click="openFormCreate"
+            ></v-fab>
+        </v-container>
     </v-main>
 </template>
 

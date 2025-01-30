@@ -282,3 +282,7 @@ html {
 table.v-plain-table.with-border-bottom > tbody > tr:not(:last-child) > td {
     border-bottom: thin solid rgba(0, 0, 0, 0.12);
 }
+
+.v-fab.v-fab--absolute.v-fab--bottom.v-fab--right > .v-fab__container {
+    margin-bottom: 45px;
+}
