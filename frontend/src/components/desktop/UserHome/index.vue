@@ -8,7 +8,7 @@
         <v-app-bar-nav-icon @click="railMode = !railMode"></v-app-bar-nav-icon>
 
         <v-toolbar-title class="text-body-2 font-weight-medium">
-            SiLEGIT
+            SiRUHAY
         </v-toolbar-title>
 
         <v-spacer></v-spacer>
@@ -33,7 +33,7 @@
         <v-btn icon>
             <v-icon>power_settings_new</v-icon>
 
-            <form-confirm icon="door_back" title="Keluar dari SiLEGIT?">
+            <form-confirm icon="door_back" title="Keluar dari SiRUHAY?">
                 <div class="text-caption text-grey-darken-1">
                     Saat Anda keluar dari aplikasi ini, semua data temporer yang
                     tersimpan pada perangkat ini juga akan di hapus.

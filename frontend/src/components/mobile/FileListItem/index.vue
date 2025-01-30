@@ -173,7 +173,7 @@
                             style="line-height: 1.15rem"
                         >
                             Proses sync dokumen akan mengambil data dari server
-                            SiASN dan menyimpan dokumen ke server SiLEGIT.
+                            SiASN dan menyimpan dokumen ke server SiRUHAY.
                         </div>
                     </v-card-text>
 

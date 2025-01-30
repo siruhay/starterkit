@@ -5,7 +5,7 @@
         :color="`${theme}`"
     >
         <v-toolbar-title class="text-body-2 font-weight-bold"
-            >SiLEGIT</v-toolbar-title
+            >SiRUHAY</v-toolbar-title
         >
 
         <v-spacer></v-spacer>

@@ -22,7 +22,7 @@
                             style="top: 24px"
                         >
                             <img
-                                src="/assets/pwa-96x96.png"
+                                src="/assets/pwa-76x76.png"
                                 style="
                                     margin-left: -2px;
                                     height: auto;
@@ -31,7 +31,7 @@
                             />
 
                             <div class="ml-2 text-h3 font-brand">
-                                Si<span class="sub-color">LEGIT</span>
+                                Si<span class="sub-color">RUHAY</span>
                             </div>
                         </div>
 

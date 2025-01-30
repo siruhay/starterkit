@@ -22,7 +22,7 @@
                     />
 
                     <div class="mt-2 text-h4 font-brand">
-                        Si<span class="sub-color">LEGIT</span>
+                        Si<span class="sub-color">RUHAY</span>
                     </div>
                 </div>
 

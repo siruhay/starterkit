@@ -178,7 +178,7 @@ export default {
 
             parseURL.searchParams.append(
                 "disk",
-                params.path ? "silegit" : "siasn"
+                params.path ? "siruhay" : "siasn"
             );
 
             this.ERRORSTATE = false;
