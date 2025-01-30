@@ -1,5 +1,5 @@
 {
-    "name": "monoland/starterkit",
+    "name": "monoland/platform",
     "description": "Silegit Web Application Platform",
     "type": "library",
     "require": {
