@@ -164,15 +164,15 @@
 
     <form-help mode="show" :withActivityLogs="withActivityLogs">
         <template v-slot:feed>
-            <slot name="feed" :theme="theme"></slot>
+            <slot name="feed" :theme="theme" :record="record"></slot>
         </template>
 
         <template v-slot:info>
-            <slot name="info" :theme="theme"></slot>
+            <slot name="info" :theme="theme" :record="record"></slot>
         </template>
 
         <template v-slot:icon>
-            <slot name="icon" :theme="theme"></slot>
+            <slot name="icon" :theme="theme" :record="record"></slot>
         </template>
     </form-help>
 </template>
