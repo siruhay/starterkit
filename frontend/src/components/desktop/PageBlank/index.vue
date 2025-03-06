@@ -36,7 +36,16 @@
         </v-btn>
     </v-app-bar>
 
-    <page-sidenav :title="sidenavTitle"></page-sidenav>
+    <page-sidenav :title="sidenavTitle">
+        <slot
+            name="sidenav"
+            :combos="combos"
+            :highlight="highlight"
+            :record="record"
+            :store="store"
+            :theme="theme"
+        ></slot>
+    </page-sidenav>
 
     <v-main style="min-height: 100dvh">
         <v-container>

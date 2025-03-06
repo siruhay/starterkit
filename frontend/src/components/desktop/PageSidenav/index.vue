@@ -25,6 +25,7 @@
                 height="calc(100dvh - 75px)"
                 width="100%"
             >
+                <slot></slot>
             </v-sheet>
         </template>
     </v-navigation-drawer>

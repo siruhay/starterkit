@@ -24,6 +24,13 @@ export const usePageStore = defineStore("pageStore", {
 
         beforePost: undefined,
 
+        canCreate: false,
+        canEdit: false,
+        canUpdate: false,
+        canDelete: false,
+        canRestore: false,
+        canDestroy: false,
+
         checksum: null,
         combos: {},
         currentFile: {},
@@ -83,6 +90,7 @@ export const usePageStore = defineStore("pageStore", {
         parent: {},
         parentKey: null,
         parentName: null,
+        progress: false,
 
         railMode: false,
         record: {},
@@ -103,6 +111,13 @@ export const usePageStore = defineStore("pageStore", {
         softdelete: false,
         statuses: {},
 
+        tableOptions: {
+            groupBy: [],
+            itemsPerPage: 10,
+            page: 1,
+            search: null,
+            sortBy: [],
+        },
         title: null,
         theme: "teal",
         totalRecords: 0,
@@ -440,12 +455,16 @@ export const usePageStore = defineStore("pageStore", {
         },
 
         getPageDatas(params) {
+            if (this.progress === true) {
+                return;
+            }
+
             if (!this.page || (this.page && this.page.slug !== this.pageName)) {
                 this.initPage();
             }
 
-            if (Object.keys(params).length === 0) {
-                return;
+            if (!params && this.$storage.getItem("tableOptions")) {
+                params = this.$storage.getItem("tableOptions");
             }
 
             const defaultParams = this.mapDefaultParams(params);
@@ -456,14 +475,20 @@ export const usePageStore = defineStore("pageStore", {
 
             let pagePath = this.buildPath;
 
+            this.progress = true;
+
             this.$http(pagePath, {
                 method: "GET",
                 params: defaultParams,
             })
                 .then((response) => {
                     this.mapResponseData(response);
+                    this.progress = false;
                 })
-                .catch(() => this.mapPageDatasError());
+                .catch(() => {
+                    this.mapPageDatasError();
+                    this.progress = false;
+                });
         },
 
         getSanctumCSRF({ mobile }) {
@@ -598,10 +623,42 @@ export const usePageStore = defineStore("pageStore", {
                             : {};
                     this.record = JSON.parse(JSON.stringify(this.recordBase));
                     this.usetrash = usetrash ?? false;
-                    this.statuses =
-                        statuses && Object.keys(statuses).length > 0
-                            ? statuses
-                            : {};
+
+                    if (statuses && Object.keys(statuses).length > 0) {
+                        this.canCreate =
+                            "canCreate" in statuses ? statuses.canCreate : true;
+
+                        this.canEdit =
+                            "canEdit" in statuses ? statuses.canEdit : true;
+
+                        this.canUpdate =
+                            "canUpdate" in statuses ? statuses.canUpdate : true;
+
+                        this.canDelete =
+                            "canDelete" in statuses ? statuses.canDelete : true;
+
+                        this.canRestore =
+                            "canRestore" in statuses
+                                ? statuses.canRestore
+                                : true;
+
+                        this.canDestroy =
+                            "canDestroy" in statuses
+                                ? statuses.canDestroy
+                                : true;
+
+                        this.statuses = statuses;
+                    } else {
+                        this.statuses = {};
+
+                        this.canCreate = true;
+                        this.canEdit = true;
+                        this.canUpdate = true;
+                        this.canDelete = true;
+                        this.canRestore = true;
+                        this.canDestroy = true;
+                    }
+
                     this.title = title;
                     this.trashed = trashed;
 
@@ -663,11 +720,42 @@ export const usePageStore = defineStore("pageStore", {
                         parent && Object.keys(parent).length > 0 ? parent : {};
                     this.logs = logs && Array.isArray(logs) ? logs : [];
                     this.softdelete = softdelete ?? false;
-                    this.statuses =
-                        statuses && Object.keys(statuses).length > 0
-                            ? statuses
-                            : {};
                     this.title = title;
+
+                    if (statuses && Object.keys(statuses).length > 0) {
+                        this.canCreate =
+                            "canCreate" in statuses ? statuses.canCreate : true;
+
+                        this.canEdit =
+                            "canEdit" in statuses ? statuses.canEdit : true;
+
+                        this.canUpdate =
+                            "canUpdate" in statuses ? statuses.canUpdate : true;
+
+                        this.canDelete =
+                            "canDelete" in statuses ? statuses.canDelete : true;
+
+                        this.canRestore =
+                            "canRestore" in statuses
+                                ? statuses.canRestore
+                                : true;
+
+                        this.canDestroy =
+                            "canDestroy" in statuses
+                                ? statuses.canDestroy
+                                : true;
+
+                        this.statuses = statuses;
+                    } else {
+                        this.statuses = {};
+
+                        this.canCreate = true;
+                        this.canEdit = true;
+                        this.canUpdate = true;
+                        this.canDelete = true;
+                        this.canRestore = true;
+                        this.canDestroy = true;
+                    }
                 }
             }
         },

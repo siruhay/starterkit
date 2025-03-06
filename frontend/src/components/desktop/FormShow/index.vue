@@ -22,7 +22,7 @@
         <v-spacer></v-spacer>
 
         <template v-if="softdelete">
-            <v-btn icon>
+            <v-btn icon v-if="canRestore">
                 <v-icon>restore</v-icon>
 
                 <form-confirm icon="restore" title="pulihkan">
@@ -50,7 +50,7 @@
                 </form-confirm>
             </v-btn>
 
-            <v-btn color="orange" icon>
+            <v-btn color="orange" icon v-if="canDestroy">
                 <v-icon>delete_forever</v-icon>
 
                 <form-confirm icon="delete_forever" title="Hapus Permanen?">
@@ -83,13 +83,13 @@
         </template>
 
         <template v-else>
-            <v-btn v-if="!hideEdit" icon @click="openFormEdit">
+            <v-btn v-if="!hideEdit && canEdit" icon @click="openFormEdit">
                 <v-icon>edit</v-icon>
 
                 <v-tooltip activator="parent" location="bottom">Ubah</v-tooltip>
             </v-btn>
 
-            <v-btn v-if="!hideDelete" color="deep-orange" icon>
+            <v-btn v-if="!hideDelete && canDelete" color="deep-orange" icon>
                 <v-icon>delete</v-icon>
 
                 <form-confirm icon="delete" title="Hapus data ini?">
@@ -155,6 +155,7 @@
                 <slot
                     :combos="combos"
                     :record="record"
+                    :statuses="statuses"
                     :theme="theme"
                     :store="store"
                 ></slot>
@@ -164,15 +165,33 @@
 
     <form-help mode="show" :withActivityLogs="withActivityLogs">
         <template v-slot:feed>
-            <slot name="feed" :theme="theme" :record="record"></slot>
+            <slot
+                name="feed"
+                :combos="combos"
+                :theme="theme"
+                :record="record"
+                :statuses="statuses"
+            ></slot>
         </template>
 
         <template v-slot:info>
-            <slot name="info" :theme="theme" :record="record"></slot>
+            <slot
+                name="info"
+                :combos="combos"
+                :theme="theme"
+                :record="record"
+                :statuses="statuses"
+            ></slot>
         </template>
 
         <template v-slot:icon>
-            <slot name="icon" :theme="theme" :record="record"></slot>
+            <slot
+                name="icon"
+                :combos="combos"
+                :theme="theme"
+                :record="record"
+                :statuses="statuses"
+            ></slot>
         </template>
     </form-help>
 </template>
@@ -207,6 +226,11 @@ export default {
         store.activityLog = props.withActivityLogs;
 
         const {
+            canEdit,
+            canDelete,
+            canRestore,
+            canDestroy,
+
             combos,
             helpState,
             highlight,
@@ -214,6 +238,7 @@ export default {
             page,
             pageKey,
             softdelete,
+            statuses,
             record,
             theme,
             title,
@@ -229,6 +254,11 @@ export default {
         } = store;
 
         return {
+            canEdit,
+            canDelete,
+            canRestore,
+            canDestroy,
+
             combos,
             helpState,
             highlight,
@@ -237,6 +267,7 @@ export default {
             pageKey,
             record,
             softdelete,
+            statuses,
             theme,
             title,
 
