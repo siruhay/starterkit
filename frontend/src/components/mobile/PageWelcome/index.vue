@@ -56,7 +56,7 @@
                                 version 1.0.0
                             </div>
                             <div class="ml-4 text-caption text-uppercase">
-                                ULP &copy; 2024
+                                DPMPD &copy; 2024
                             </div>
                         </div>
                     </v-col>
