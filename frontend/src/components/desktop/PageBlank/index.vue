@@ -42,6 +42,7 @@
             :combos="combos"
             :highlight="highlight"
             :record="record"
+            :records="records"
             :store="store"
             :theme="theme"
         ></slot>
@@ -53,6 +54,7 @@
                 :combos="combos"
                 :highlight="highlight"
                 :record="record"
+                :records="records"
                 :store="store"
                 :theme="theme"
             ></slot>
@@ -130,6 +132,7 @@ export default {
             sidenavState,
             railMode,
             record,
+            records,
             theme,
         } = storeToRefs(store);
 
@@ -144,6 +147,7 @@ export default {
             sidenavState,
             railMode,
             record,
+            records,
             theme,
 
             getPageData,
