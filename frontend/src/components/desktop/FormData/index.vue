@@ -265,10 +265,6 @@ export default {
     },
 
     methods: {
-        // clickOnRow: function (event, { item }) {
-        //     this.setSelected(item);
-        // },
-
         loadItems: function (tableOptions) {
             this.$storage.setItem("tableOptions", tableOptions);
 

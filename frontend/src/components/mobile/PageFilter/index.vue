@@ -240,6 +240,8 @@
                                     v-model="search"
                                     clearable
                                     hide-details
+                                    @keyup.enter="applyFilterData"
+                                    @click:clear="clearFilterData"
                                 ></v-text-field>
                             </v-card-text>
 
@@ -459,6 +461,11 @@ export default {
             this.sidenavState = false;
 
             this.getPageDatas(this.params);
+        },
+
+        clearFilterData: function () {
+            this.search = null;
+            this.applyFilterData();
         },
     },
 };
