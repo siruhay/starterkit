@@ -1,9 +1,5 @@
 import { defineStore } from "pinia";
 
-// if (!sessionStorage.tabCreateTimestamp) {
-//     sessionStorage.tabCreateTimestamp = Date.now();
-// }
-
 export const usePageStore = defineStore("pageStore", {
     state: () => ({
         email: null,
@@ -870,11 +866,9 @@ export const usePageStore = defineStore("pageStore", {
                 this.paramsOld = JSON.parse(JSON.stringify(resultParams));
             } else {
                 if (
-                    JSON.stringify(resultParams) ===
+                    JSON.stringify(resultParams) !==
                     JSON.stringify(this.paramsOld)
                 ) {
-                    return null;
-                } else {
                     this.paramsOld = JSON.parse(JSON.stringify(resultParams));
                 }
             }
