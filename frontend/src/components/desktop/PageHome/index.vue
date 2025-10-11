@@ -7,9 +7,9 @@
     >
         <v-app-bar-nav-icon @click="railMode = !railMode"></v-app-bar-nav-icon>
 
-        <v-toolbar-title class="text-body-2 font-weight-bold text-uppercase">{{
-            module.name
-        }}</v-toolbar-title>
+        <v-toolbar-title class="text-body-2 font-weight-bold text-uppercase">
+            {{ module.name }}
+        </v-toolbar-title>
 
         <v-spacer></v-spacer>
 
@@ -29,11 +29,8 @@
 
     <v-main style="min-height: 100dvh">
         <v-container>
-            <page-paper max-width="100%">
-                <div
-                    class="d-flex justify-center mt-3"
-                    v-if="dockMenus.length > 0"
-                >
+            <page-paper max-width="100%" v-if="dockMenus.length > 0">
+                <div class="d-flex justify-center mt-3">
                     <v-chip
                         :color="theme"
                         class="text-white"
@@ -46,7 +43,6 @@
                 </div>
 
                 <v-sheet
-                    v-if="dockMenus.length > 0"
                     class="mx-auto bg-transparent pa-4"
                     :style="
                         $vuetify.display.width >= 1280
