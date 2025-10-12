@@ -21,53 +21,17 @@
         height="256"
     ></v-sheet>
 
-    <v-main>
-        <v-sheet class="bg-transparent position-relative px-4 pt-9 pb-4">
-            <v-sheet
-                class="position-absolute"
-                color="transparent"
-                width="calc(100% - 32px)"
-                style="top: 0; z-index: 1"
-            >
-                <div class="d-flex justify-center">
-                    <form-icon></form-icon>
-
-                    <div
-                        :class="`text-${theme}-lighten-4`"
-                        class="text-caption text-white position-absolute font-weight-bold text-uppercase text-right"
-                        style="
-                            font-size: 0.63rem !important;
-                            top: 8px;
-                            right: 0;
-                            width: calc(50% - 30px);
-                        "
-                    >
-                        <div
-                            class="d-inline-block text-truncate"
-                            style="max-width: 100%"
-                        >
-                            {{ title }}
-                        </div>
-                    </div>
-                </div>
-            </v-sheet>
-
-            <v-sheet
-                class="position-relative pt-7"
-                elevation="1"
-                min-height="calc(100dvh - 172px)"
-                rounded="lg"
-                flat
-            >
-                <slot
-                    :combos="combos"
-                    :highlight="highlight"
-                    :record="record"
-                    :store="store"
-                    :theme="theme"
-                ></slot>
-            </v-sheet>
-        </v-sheet>
+    <v-main style="min-height: 100dvh">
+        <v-container>
+            <slot
+                :combos="combos"
+                :highlight="highlight"
+                :record="record"
+                :records="records"
+                :store="store"
+                :theme="theme"
+            ></slot>
+        </v-container>
     </v-main>
 </template>
 
@@ -117,6 +81,11 @@ export default {
             type: Boolean,
             default: false,
         },
+
+        showSidenav: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     setup(props) {
@@ -135,6 +104,7 @@ export default {
             sidenavState,
             railMode,
             record,
+            records,
             theme,
         } = storeToRefs(store);
 
@@ -149,6 +119,7 @@ export default {
             sidenavState,
             railMode,
             record,
+            records,
             theme,
 
             getPageData,

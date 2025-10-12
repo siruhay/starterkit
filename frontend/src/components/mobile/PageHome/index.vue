@@ -130,7 +130,9 @@
                     </v-chip>
                 </v-divider>
 
-                <slot :record="record" :store="store" :theme="theme"></slot>
+                <v-card-text>
+                    <slot :record="record" :store="store" :theme="theme"></slot>
+                </v-card-text>
             </v-sheet>
         </v-sheet>
     </v-main>

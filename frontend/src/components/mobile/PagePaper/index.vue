@@ -58,7 +58,7 @@
         </v-sheet>
 
         <v-sheet
-            class="mx-auto position-relative pt-7"
+            class="mx-auto position-relative pt-7 overflow-hidden"
             elevation="2"
             rounded="lg"
             flat

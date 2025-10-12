@@ -52,7 +52,11 @@
             </div>
         </v-sheet>
 
-        <v-sheet class="mx-auto position-relative pt-9" rounded="lg" flat>
+        <v-sheet
+            class="mx-auto position-relative pt-9 overflow-hidden"
+            rounded="lg"
+            flat
+        >
             <v-card-text class="text-center" v-if="userAvatar">
                 <div class="text-body-2 font-weight-medium text-uppercase">
                     {{ auth.username }}

@@ -29,7 +29,7 @@
         height="256"
     ></v-sheet>
 
-    <v-main>
+    <v-main style="min-height: 100dvh">
         <v-container class="pt-0">
             <slot :modules="modules" :store="store" :theme="theme"></slot>
         </v-container>
