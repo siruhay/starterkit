@@ -126,10 +126,10 @@ export const usePageStore = defineStore("pageStore", {
     getters: {
         buildPath: (state) => {
             let pagePath =
-                state.pagePath ??
-                `${state.module.prefix ? state.module.prefix + "/" : ""}api/${
-                    state.page.path
-                }`;
+                state?.pagePath ??
+                `${
+                    state?.module?.prefix ? state?.module?.prefix + "/" : ""
+                }api/${state?.page?.path}`;
 
             Object.keys(state.$route.params).forEach((param) => {
                 pagePath = pagePath.replace(

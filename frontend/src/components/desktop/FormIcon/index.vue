@@ -4,9 +4,9 @@
             <div class="position-relative h-100 w-100 text-white">
                 <v-avatar :color="`${theme}`" elevation="6" size="60">
                     <slot>
-                        <v-icon color="white" size="32">{{
-                            icon ?? page.icon
-                        }}</v-icon>
+                        <v-icon color="white" size="32">
+                            {{ icon ?? page?.icon }}
+                        </v-icon>
                     </slot>
                 </v-avatar>
             </div>
